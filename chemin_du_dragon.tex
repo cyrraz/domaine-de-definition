@@ -1,0 +1,313 @@
+%====================================================================================================
+\documentclass[a4paper,12pt]{article}
+%====================================================================================================
+
+% Packages
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage[francais]{babel}
+\usepackage{multicol}
+\usepackage[margin=2.0cm]{geometry}
+\usepackage[nameinlink,capitalise,noabbrev]{cleveref}
+
+% Quelques abreviations utiles
+\def \be {\begin{equation}}
+\def \ee {\end{equation}}
+\def \bs {\begin{equation} \left\{  \begin{aligned}}
+\def \es {\end{aligned} \right. \end{equation}}
+
+\newcommand{\set}[1]{\left\{#1\right\}}
+\newcommand{\minuss}[1]{\setminus\left\{#1\right\}}
+
+\newcommand{\minusioo}[1]{\setminus\left\rbrack#1\right\lbrack}
+\newcommand{\minusiof}[1]{\setminus\left\rbrack#1\right\rbrack}
+\newcommand{\minusifo}[1]{\setminus\left\lbrack#1\right\lbrack}
+\newcommand{\minusiff}[1]{\setminus\left\lbrack#1\right\rbrack}
+
+\newcommand{\intoo}[1]{\left\rbrack#1\right\lbrack}
+\newcommand{\intof}[1]{\left\rbrack#1\right\rbrack}
+\newcommand{\intfo}[1]{\left\lbrack#1\right\lbrack}
+\newcommand{\intff}[1]{\left\lbrack#1\right\rbrack}
+
+\DeclareMathOperator{\e}{e}
+
+%====================================================================================================
+\begin{document}
+%====================================================================================================
+\title{
+Le chemin du dragon\\
+\vspace{0.25cm} \Large \textit{D\'efi math\'ematique adress\' e aux coll\'egiens d\' esireux de prouver leur connaissance des fonctions usuelles}}
+\author{par Cyrille \bsc{Praz}}
+\date{23.06.2015}
+\maketitle
+%====================================================================================================
+\section{Introduction}
+%====================================================================================================
+ Le domaine de d\'efinition d'une fonction  r\'eelle   $f$ d'une variable r\'eelle $x$ est le sous-ensemble de $\mathbb{R}$ contenant tous les nombres qui poss\`edent une image par la fonction $f$.
+Le but de l'exercice pr\'esent\'e \`a la \cref{exercice} de ce document est  de trouver le domaine de d\'efinition de chacune des 100 fonctions propos\'ees, en moyenne class\'ees par ordre croissant de difficult\'e.
+En plus de permettre une r\'evision des fonctions usuelles, cet exercice peut \^etre vu comme un entra\^inement aux \'etudes de signe, aux techniques de factorisation de polyn\^omes et aux m\'ethodes de r\'esolution d'\'equations du premier et du deuxi\`eme degr\'e \`a une inconnue.
+La \cref{notations} ci-dessous pr\'esente quelques-unes des notations et conventions utilis\'ees dans ce document ; comme celles-ci sont relativement classiques, la lecture de cette section n'est pas n\'ecessaire dans un premier temps.
+Finalement, la \cref{corrige} contient un corrig\'e succinct de l'exercice.
+%====================================================================================================
+\clearpage
+\section{Notations et conventions}\label{notations}
+%====================================================================================================
+Ci-dessous sont list\'ees quelques notations et conventions utilis\'ees dans ce document :
+
+\begin{enumerate}
+\item La fonction arcsinus, not\'ee $\arcsin$, est la r\' eciproque de la  fonction bijective $f:\intff{-\frac{\pi}{2},\frac{\pi}{2}}\rightarrow\intff{-1,1}$ d\'efinie par $f(x)=\sin(x)$.
+\item La fonction arccosinus, not\'ee $\arccos$, est la r\' eciproque de la fonction bijective $f:\intff{0,\pi}\rightarrow\intff{-1,1}$ d\'efinie par $f(x)=\cos(x)$.
+\item La fonction arctangente, not\'ee $\arctan$, est la r\' eciproque de la fonction bijective $f:\intoo{-\frac{\pi}{2},\frac{\pi}{2}}\rightarrow\mathbb{R}$ d\'efinie par $f(x)=\tan(x)$.
+\item Les arguments des fonctions sinus, cosinus et tangente ainsi que les images des fonctions arcsinus, arccosinus et arctangente sont exprim\'es en radians.
+\item Pour $n\in\mathbb{N^*}$, la fonction racine 2n-i\`eme, not\'ee $\sqrt[2n]{\cdot}$ ou simplement $\sqrt{\cdot}$ dans le cas $n=1$, est la r\' eciproque de la fonction bijective $f:\mathbb{R_+}\rightarrow\mathbb{R_+}$ d\'efinie par $f(x)=x^{2n}$.
+%\item (Faux?) Pour $n\in\mathbb{N}$, la fonction racine (2n+1)-i\`eme, not\'ee $\sqrt[2n+1]{\cdot}$, est la r\' eciproque de la fonction bijective $f:\mathbb{R}\rightarrow\mathbb{R}$ d\'efinie par $f(x)=x^{2n+1}$.
+\item Pour  $x\in\mathbb{R^*}$ et $a\in\mathbb{Z^*}$, on \'ecrit $x^{-a}=\frac{1}{x^a}$. Suivant la m\^eme logique, on consid\`ere que si $x\in\mathbb{R^*}$, alors $x^0=1$. De plus, on adopte la convention $0^0=1$.
+\item Pour $x\in\mathbb{R_+}$ et $p,q\in\mathbb{N^*}$, on d\'efinit $x^{\frac{p}{q}}=\sqrt[q]{x^p}$. Si de plus $x$ est non nul, on d\'efinit $x^{-\frac{p}{q}}=\frac{1}{\sqrt[q]{x^p}}$.
+\item Pour $x\in\mathbb{R_+^*}$ et $y\in\mathbb{R}$, on g\'en\'eralise la d\'efinition de puissance selon la relation $x^y=\e^{y\ln(x)}$. De plus, on g\'en\'eralise la relation $0^z=0$ pour tout $z\in\mathbb{R_+^*}$.
+\item Pour $a\in\mathbb{R_+^*}$, la fonction logarithme en base $a$, not\'ee $\log_a$ ou simplement $\log$ dans le cas $a=10$ ou encore $\ln$ dans le cas $a=\e$, est la r\' eciproque de la fonction bijective $f:\mathbb{R}\rightarrow\mathbb{R_+^*}$ d\'efinie par $f(x)=a^x$.
+\item Pour $n\in\mathbb{N}$, les notations $\sin^n(x)$ et $\ln^n(x)$ sont respectivement \'equivalentes aux expressions $\left\lbrack\sin(x)\right\rbrack^n$ et $\left\lbrack\ln(x)\right\rbrack^n$.
+
+\end{enumerate}
+%====================================================================================================
+\clearpage
+\section{Exercice}\label{exercice}
+Trouver le domaine de d\'efinition des fonctions r\'eelles \`a variable r\'eelle suivantes : 
+%====================================================================================================
+\begin{multicols}{2}
+\begin{enumerate}
+
+% 0
+\item $f(x)=1$
+\item $f(x)=x$
+\item $f(x)=-x$
+\item $f(x)=\frac{1}{x}$
+\item $f(x)=|x|$
+\item $f(x)=2x$
+\item $f(x)= \frac{x}{2}$
+\item $f(x)=x^2$
+\item $f(x)=\sqrt{x}$
+\item $f(x)=\frac{1}{\sqrt{x}}$
+% 10
+\item $f(x)=10^x$
+\item $f(x)=\log(x)$
+\item $f(x)=\e^x$
+\item $f(x)=\ln(x)$
+\item $f(x)=\sin(x)$
+\item $f(x)=\arcsin(x)$
+\item $f(x)=\cos(x)$
+\item $f(x)=\arccos(x)$
+\item $f(x)=\tan(x)$
+\item $f(x)=\arctan(x)$
+% 20
+\item $f(x)=x^1$
+\item $f(x)=x^{\frac{1}{2}}$
+\item $f(x)=x^0$
+\item $f(x)=x^{-\frac{1}{2}}$
+\item $f(x)=x^{-1}$
+\item $f(x)=(x+7)^1$
+\item $f(x)=(x+7)^{\frac{1}{2}}$
+\item $f(x)=(x+7)^0$
+\item $f(x)=(x+7)^{-\frac{1}{2}}$
+\item $f(x)=(x+7)^{-1}$
+% 30
+\item $f(x)=x^2+2x+3$
+\item $f(x)=\sqrt{3}x^4-x^3+\pi x^2-11x+\e$
+\item $f(x)=\frac{1}{x+7}$
+\item $f(x)=\frac{1}{2x-\pi}$
+\item $f(x)=\frac{1}{x^2+4x-5}$
+\item $f(x)=\frac{1}{2x^2-5x+3}$
+\item $f(x)=\frac{1}{x^3-x^2-2x}$
+\item $f(x)=\frac{\pi x^2 +7x -3}{2x^2-\frac{1}{2}x-\frac{3}{2}}$
+\item $f(x)=\frac{6x-1}{x^3-15x^2+75x-125}$
+\item $f(x)=\frac{1}{x-1}+\frac{2}{x^2-2}+\frac{3}{x^3-3}$
+% 40
+\item $f(x)=\frac{1}{\sqrt{-x}}$
+\item $f(x)=\sqrt{x^2}$
+\item $f(x)=\sqrt{1-2x}$
+\item $f(x)=\sqrt{x^2+1}$
+\item $f(x)=\sqrt{5-\frac{1}{2}x}+\sqrt{3x+4}$
+\item $f(x)=\sqrt{x^2-x-1}$
+\item $f(x)=\sqrt{(4x^2-7x)^3}$
+\item $f(x)=\sqrt{\frac{1-9x}{4x^4-12x^2+9}}$
+\item $f(x)=\sqrt{\frac{1-x^2}{x^3-\frac{1}{4}x}}$
+\item $f(x)=\frac{1}{\sqrt{x^2-3}-4}$
+% 50
+\item $f(x)=\e^{x^2-5x}$
+\item $f(x)=\frac{1}{\e^{8x-9}}$
+\item $f(x)=\frac{10^x-2}{x-2}$
+\item $f(x)=\frac{x-2}{10^x-2}$
+\item $f(x)=\sqrt{3^{6-7x}}$
+\item $f(x)=\ln\left(x^2-5x\right)$
+\item $f(x)=\frac{1}{\ln\left(8x-9\right)}$
+\item $f(x)=\frac{\log(x)-2}{x-2}$
+\item $f(x)=\frac{x-2}{\log(x)-2}$
+\item $f(x)=\sqrt{\log_3(6-7x)}$
+% 60
+\item $f(x)=\sin(10x-1)$
+\item $f(x)=\cos(10x-2)$
+\item $f(x)=\tan(10x-3)$
+\item $f(x)=\arcsin(10x-4)$
+\item $f(x)=\arccos(10x-5)$
+\item $f(x)=\arctan(10x-6)$
+\item $f(x)=\frac{1}{\sin(10x-7)}$
+\item $f(x)=\frac{1}{\cos(10x-8)}$
+\item $f(x)=\frac{1}{\tan(10x-9)}$
+\item $f(x)=\frac{1}{\arcsin(10x-10)}$
+% 70
+\item $f(x)=\sqrt{1-\sqrt{x^2}}+\sqrt{1-2x}$
+\item $f(x)=\frac{1}{\sqrt{x^2+(\e-\pi)x-\e\pi}}$
+\item $f(x)=\sqrt{\frac{x^2-8}{x^3+8}}$
+\item $f(x)=\sqrt{1-\sqrt{x^2-1}}$
+\item $f(x)=\sqrt{x-|x-2|}$
+\item $f(x)=\sqrt{\sin(x)}$
+\item $f(x)=\frac{1}{\sqrt{2x-1}-\sqrt{3x-4}}$
+\item $f(x)=\sqrt{\sqrt{2-\frac{1}{3}x}-\sqrt{3x+1}}$
+\item $f(x)=\sqrt{\frac{2x^2+4x-5}{\sqrt{2}-\sqrt{x+10}}}$
+\item $f(x)=\sqrt{\frac{9x-8\sqrt{x}-1}{x-2\sqrt{x}+\frac{3}{4}}}$
+% 80
+\item $f(x)=\e^{\frac{8t^5-3t^4+7}{t^4+2t^2+1}}$
+\item $f(x)=\frac{\sqrt{x+2}}{\e^{7x-1}-\e^{3-8x}}$
+\item $f(x)=\sqrt{5-\e^{x^2-5}}$
+\item $f(x)=\frac{\pi^x}{(2^x-5)(7^x-11)(\e^x-3)}$
+\item $f(x)=\frac{1}{2\cdot3^{6x-3}-7\cdot3^{4x-2}+5\cdot3^{2x-1}}$ %1/x(2x-5)(3x-1)
+\item $f(x)=\frac{\ln(2x-3)}{\ln(2x)-3}$
+\item $f(x)=\ln\left\lbrack-\frac{\sqrt{6}x^2+(2\sqrt{3}-3\sqrt{2})x-6}{2x^2+3x-5}\right\rbrack$
+\item $f(x)=\ln|\log(x)|$
+\item $f(x)=\sqrt{\ln\sqrt{3-x^2}}$
+\item $f(x)=\frac{\ln\left\lbrack\ln^2(x)+10\ln(x)+25\right\rbrack}{\ln^2(x)-\ln(x)}$
+%90
+\item $f(x)=\arctan\left\lbrack\sqrt{\log_{2}\left(\frac{2\sin(-\e^\pi)}{7^{-7}}\right)}\,\right\rbrack$
+\item $f(x)=\sqrt{x}+\sqrt{\sqrt{3}-\sqrt{5^{x^2+3x}-2}}$
+\item $f(x)=\frac{1}{\left|\left|\ln(|x|-1)-2\right|-3\right|}$
+\item $f(x)=\frac{\arcsin(x)\arccos(2x)\arctan(3x)}{\sin(4x)\cos(5x)\tan(6x)}$
+\item $f(x)=\frac{1}{\ln\left|\sin(x^2+x)\right|}$
+\item $f(x)=\frac{\sqrt{-\left|30x^3-x^2-x\right|}}{x^4+\frac{329}{30}x^3+\frac{148}{5}x^2-\frac{41}{30}x-1}$ % x(5x-1)(6x+1)/(x-1/5)(x+5)(x+1/6)(x+6)
+\item $f(x)=\sqrt{\frac{14^x-11\cdot7^x+3\cdot2^x-33}{x^5+5x^4+10x^3+10x^2+5x+1}}$
+\item $f(x)=\arcsin(x)+\sqrt{\frac{x^2+3|x|+2}{\ln\left|\frac{1}{2}+\cos(3x+2)\right|}}$
+\item $f(x)=\frac{\log(5x-4)}{\log(5x-4)}+\frac{\cos(x)-x}{\cos(x)-x}+\frac{x^2-2^x}{x^2-2^x}$
+\item $f(x)=\frac{\sqrt{-\ln^4(x)+2\ln^3(x)+\ln^2(x)-2\ln(x)}}{\left|-\sin^4(x)+2\sin^3(x)+\sin^2(x)-2\sin(x)\right|}$
+
+\end{enumerate}
+\end{multicols}
+%====================================================================================================
+\clearpage
+\section{Corrig\'e}\label{corrige} 
+%====================================================================================================
+\begin{multicols}{2}
+\begin{enumerate}
+% 0
+\item $D_f=\mathbb{R}$
+\item $D_f=\mathbb{R}$
+\item $D_f=\mathbb{R}$
+\item $D_f=\mathbb{R^*}$
+\item $D_f=\mathbb{R}$
+\item $D_f=\mathbb{R}$
+\item $D_f=\mathbb{R}$
+\item $D_f=\mathbb{R}$
+\item $D_f=\mathbb{R_+}$
+\item $D_f=\mathbb{R_+^*}$
+% 10
+\item $D_f=\mathbb{R}$
+\item $D_f=\mathbb{R_+^*}$
+\item $D_f=\mathbb{R}$
+\item $D_f=\mathbb{R_+^*}$
+\item $D_f=\mathbb{R}$
+\item $D_f=\intff{-1,1}$
+\item $D_f=\mathbb{R}$
+\item $D_f=\intff{-1,1}$
+\item $D_f=\mathbb{R}\minuss{\frac{\pi}{2}+k\pi : k\in\mathbb{Z}}$
+\item $D_f=\mathbb{R}$
+% 20
+\item $D_f=\mathbb{R}$
+\item $D_f=\mathbb{R_+}$
+\item $D_f=\mathbb{R}$
+\item $D_f=\mathbb{R_+^*}$
+\item $D_f=\mathbb{R^*}$
+\item $D_f=\mathbb{R}$
+\item $D_f=\intfo{-7,+\infty}$
+\item $D_f=\mathbb{R}$
+\item $D_f=\intoo{-7,+\infty}$
+\item $D_f=\mathbb{R}\minuss{-7}$
+% 30
+\item $D_f=\mathbb{R}$
+\item $D_f=\mathbb{R}$
+\item $D_f=\mathbb{R}\minuss{-7}$
+\item $D_f=\mathbb{R}\minuss{\frac{\pi}{2}}$
+\item $D_f=\mathbb{R}\minuss{-5,1}$
+\item $D_f=\mathbb{R}\minuss{1,\frac{3}{2}}$
+\item $D_f=\mathbb{R}\minuss{-1,0,2}$
+\item $D_f=\mathbb{R}\minuss{-\frac{3}{4},1}$
+\item $D_f=\mathbb{R}\minuss{5}$
+\item $D_f=\mathbb{R}\minuss{1,\pm\sqrt{2},\sqrt[3]{3}}$
+% 40
+\item $D_f=\mathbb{R_-^*}$
+\item $D_f=\mathbb{R}$
+\item $D_f=\intof{-\infty,\frac{1}{2}}$
+\item $D_f=\mathbb{R}$
+\item $D_f=\intff{-\frac{4}{3},10}$
+\item $D_f=\mathbb{R}\minusioo{\frac{1-\sqrt{5}}{2},\frac{1+\sqrt{5}}{2}}$
+\item $D_f=\mathbb{R}\minusioo{0,\frac{7}{4}}$
+\item $D_f=\intof{-\infty,\frac{1}{9}}\minuss{-\sqrt{\frac{3}{2}}}$
+\item $D_f=\intof{-\infty,-1}\cup\intoo{-\frac{1}{2},0}\cup\intof{\frac{1}{2},1}$
+\item $D_f=\left(\mathbb{R}\minusioo{-\sqrt{3},\sqrt{3}}\right)\minuss{\pm\sqrt{19}}$
+% 50 
+\item $D_f=\mathbb{R}$
+\item $D_f=\mathbb{R}$
+\item $D_f=\mathbb{R}\minuss{2}$
+\item $D_f=\mathbb{R}\minuss{\log(2)}$
+\item $D_f=\mathbb{R}$
+\item $D_f=\mathbb{R}\minusiff{0,5}$
+\item $D_f=\intoo{\frac{9}{8},+\infty}\minuss{\frac{5}{4}}$
+\item $D_f=\mathbb{R_+^*}\minuss{2}$
+\item $D_f=\mathbb{R_+^*}\minuss{100}$
+\item $D_f=\intof{-\infty,\frac{5}{7}}$
+ % 60
+\item $D_f=\mathbb{R}$
+\item $D_f=\mathbb{R}$
+\item $D_f=\mathbb{R}\minuss{\frac{1}{10}\left(3+\frac{\pi}{2}+k\pi\right) : k\in\mathbb{Z}}$
+\item $D_f=\intff{\frac{3}{10},\frac{1}{2}}$
+\item $D_f=\intff{\frac{2}{5},\frac{3}{5}}$
+\item $D_f=\mathbb{R}$
+\item $D_f=\mathbb{R}\minuss{\frac{1}{10}\left(7+k\pi\right) : k\in\mathbb{Z}}$
+\item $D_f=\mathbb{R}\minuss{\frac{1}{10}\left(8+\frac{\pi}{2}+k\pi\right) : k\in\mathbb{Z}}$
+\item $D_f=\mathbb{R}\minuss{\frac{1}{10}\left(9+k\frac{\pi}{2}\right) : k\in\mathbb{Z}}$
+\item $D_f=\intff{\frac{9}{10},\frac{11}{10}}\minuss{1}$
+% 70
+\item $D_f=\intff{-1,\frac{1}{2}}$
+\item $D_f=\mathbb{R}\minusiff{-\e,\pi}$
+\item $D_f=\intfo{-2\sqrt{2},-2}\cup\intfo{2\sqrt{2},+\infty}$
+\item $D_f=\intff{-\sqrt{2},-1}\cup\intff{1,\sqrt{2}}$
+\item $D_f=\intfo{1,+\infty}$
+\item $D_f=\set{a+2k\pi: a\in\intff{0,\pi}, k\in\mathbb{Z}}$
+\item $D_f=\intfo{\frac{4}{3},+\infty}\minuss{3}$
+\item $D_f=\intff{-\frac{1}{3},\frac{3}{10}}$
+\item $D_f=\intfo{-10,-8}\cup\intff{\frac{-2-\sqrt{14}}{2},\frac{-2+\sqrt{14}}{2}}$
+\item $D_f=\intof{\frac{1}{4},1}\cup\intoo{\frac{9}{4},+\infty}$
+% 80
+\item $D_f=\mathbb{R}$
+\item $D_f=\intfo{-2,+\infty}\minuss{\frac{4}{15}}$
+\item $D_f=\intff{-\sqrt{5+\ln(5)},\sqrt{5+\ln(5)}}$
+\item $D_f=\mathbb{R}\minuss{\log_2(5),\log_7(11),\ln(3)}$
+\item $D_f=\mathbb{R}\minuss{\frac{1}{2},\frac{\log_3\left(\frac{5}{2}\right)+1}{2}}$
+\item $D_f=\intoo{\frac{3}{2},+\infty}\minuss{\frac{\e^3}{2}}$
+\item $D_f=\intoo{-\frac{5}{2},-\sqrt{2}}\cup\intoo{1,\sqrt{3}}$
+\item $D_f=\mathbb{R_+^*}\minuss{1}$
+\item $D_f=\intff{-\sqrt{2},\sqrt{2}}$
+\item $D_f=\mathbb{R_+^*}\minuss{\frac{1}{\e^5},1,\e}$
+ % 90
+\item $D_f=\mathbb{R}$
+\item $D_f=\intff{\frac{\sqrt{9+4\log_5(2)}-3}{2},\frac{\sqrt{15}-3}{2}}$
+\item $D_f=\left(\mathbb{R}\minusiff{-1,1}\right)\minuss{\pm(\e^{-1}+1),\pm(\e^5+1)}$
+\item $D_f=\intff{-\frac{1}{2},\frac{1}{2}}\minuss{0,\pm\frac{\pi}{10},\pm\frac{\pi}{12}}$
+\item $D_f=\mathbb{R}\minuss{\frac{-1\pm\sqrt{1+2n\pi}}{2}: n\in\mathbb{N}}$
+\item $D_f=\set{0}$
+\item $D_f=\mathbb{R}\minusifo{-1,\log_2(11)}$
+\item $D_f=\intoo{-\frac{\pi+8}{12},\frac{\pi-8}{12}}$
+\item $D_f=\intoo{\frac{4}{5},+\infty}\minuss{2,4}$
+\item $D_f=\intff{\frac{1}{\e},1}\cup\intff{\e,\e^2}\minuss{\pi,\frac{3\pi}{2},2\pi}$
+
+\end{enumerate}
+\end{multicols}
+%====================================================================================================
+\end{document}
+%====================================================================================================

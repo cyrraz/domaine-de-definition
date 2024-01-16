@@ -1,2 +1,8 @@
-# domaines-de-definition
-Exercice sur les domaines de définition de fonctions réelles.
+# domaine-de-definition
+
+Exercice sur le domaine de définition de fonctions réelles à variable réelle.
+
+Pour produire le pdf de l'exercice, une distribution du système de composition TeX (comme [Tex Live](https://www.tug.org/texlive/)) est requise.
+Une alternative est d'utiliser un éditeur LaTeX en ligne, comme [Overleaf](https://www.overleaf.com/).
+
+Pour produire le pdf, lancer `make`.
